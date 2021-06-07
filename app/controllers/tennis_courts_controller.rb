@@ -7,7 +7,6 @@ class TennisCourtsController < ApplicationController
     @tennis_court = TennisCourt.new
   end
 
-
   def create
     @tennis_court = TennisCourt.new(list_params)
     if @tennis_court.save
@@ -16,11 +15,16 @@ class TennisCourtsController < ApplicationController
       render :new
     end
   end
-
+  
+  def destroy
+    @tennis_court = TennisCourt.find(params[:id])
+    @tennis_court.destroy
+  end
+  
   private
 
   def tennis_court_params
     params.require(:tennis_court).permit(:court_name, :address, :price_per_hour, :description, :surface_type, :created_at, :updated_at)
   end
-
+  
 end
