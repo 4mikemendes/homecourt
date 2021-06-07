@@ -1,6 +1,6 @@
 class TennisCourtsController < ApplicationController
   def index
-    @tennis_courts = TennisCourts.all
+    @tennis_courts = TennisCourt.all
   end
 
   def new
@@ -8,8 +8,9 @@ class TennisCourtsController < ApplicationController
   end
 
   def create
-    @tennis_court = TennisCourt.new(list_params)
-    if @tennis_court.save
+    @tennis_court = TennisCourt.new(tennis_court_params)
+    @tennis_court.user = current_user
+    if @tennis_court.save!
       redirect_to tennis_court_path(@tennis_court)
     else
       render :new
