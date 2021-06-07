@@ -15,16 +15,25 @@ class TennisCourtsController < ApplicationController
       render :new
     end
   end
-  
+
   def destroy
     @tennis_court = TennisCourt.find(params[:id])
     @tennis_court.destroy
   end
-  
+
+  def edit
+    @tennis_court = TennisCourt.find(params[:id])
+  end
+
+  def update
+    @tennis_court = TennisCourt.find(params[:id])
+    @tennis_court.update(tennis_court)
+    redirect_to tennis_court_path(@tennis_court)
+  end
+
   private
 
   def tennis_court_params
-    params.require(:tennis_court).permit(:court_name, :address, :price_per_hour, :description, :surface_type, :created_at, :updated_at)
+    params.require(:tennis_court).permit(:court_name, :address, :price_per_hour, :description, :surface_type)
   end
-  
 end
