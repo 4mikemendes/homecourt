@@ -1,1 +1,14 @@
-new.html.erb
+<div class="container py-5">
+      <div class="bg-white rounded p-3 shadow">
+        <h3>Your Tennis Court</h3>
+        <%= simple_form_for(@tennis_court) do |f| %>
+        <%= f.input :court_name %>
+        <%= f.input :address %>
+        <%= f.input :price_per_hour %>
+        <%= f.input :surface_type %>
+        <%= f.input :description %>
+        <%= f.submit %>
+        <% end %>
+  </div>
+</div>
+
