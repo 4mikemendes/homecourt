@@ -1,0 +1,15 @@
+current directory: /Users/HYAEJIN/code/4mikemendes/homecourt/vendor/cache/ruby/2.6.0/gems/websocket-driver-0.7.4/ext/websocket-driver
+/Users/HYAEJIN/.rbenv/versions/2.6.6/bin/ruby -I /Users/HYAEJIN/.rbenv/versions/2.6.6/lib/ruby/2.6.0 -r ./siteconf20210607-32298-lgsxm9.rb extconf.rb
+creating Makefile
+
+current directory: /Users/HYAEJIN/code/4mikemendes/homecourt/vendor/cache/ruby/2.6.0/gems/websocket-driver-0.7.4/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /Users/HYAEJIN/code/4mikemendes/homecourt/vendor/cache/ruby/2.6.0/gems/websocket-driver-0.7.4/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+current directory: /Users/HYAEJIN/code/4mikemendes/homecourt/vendor/cache/ruby/2.6.0/gems/websocket-driver-0.7.4/ext/websocket-driver
+make "DESTDIR=" install
+/usr/local/bin/ginstall -c -m 0755 websocket_mask.bundle ./.gem.20210607-32298-1gkv1pp
