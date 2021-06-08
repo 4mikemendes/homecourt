@@ -12,6 +12,11 @@ class TennisCourtsController < ApplicationController
     @tennis_court = TennisCourt.new
   end
 
+  def show
+    @tennis_court = TennisCourt.find(params[:id])
+    @schedule = Schedule.new
+  end
+
   def create
     @tennis_court = TennisCourt.new(tennis_court_params)
     @tennis_court.user = current_user
