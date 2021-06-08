@@ -2,6 +2,11 @@ class TennisCourtsController < ApplicationController
   def index
     @tennis_court = TennisCourt.new
     @tennis_courts = TennisCourt.all
+    if params[:query].present?
+      @tennis_courts = TennisCourt.search_by_court_name_and_address(params[:query])
+    else
+      @tennis_courts = TennisCourt.all
+    end
     @markers = @tennis_courts.geocoded.map do |tennis_court|
       {
         lat: tennis_court.latitude,
