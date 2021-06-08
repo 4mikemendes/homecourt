@@ -4,8 +4,18 @@ class TennisCourtsController < ApplicationController
     @tennis_courts = TennisCourt.all
   end
 
+  def show
+    @tennis_court = TennisCourt.find(params[:id])
+    @booking = Booking.new
+  end
+
   def new
     @tennis_court = TennisCourt.new
+  end
+
+  def show
+    @tennis_court = TennisCourt.find(params[:id])
+    @schedule = Schedule.new
   end
 
   def create
