@@ -2,6 +2,13 @@ class TennisCourtsController < ApplicationController
   def index
     @tennis_court = TennisCourt.new
     @tennis_courts = TennisCourt.all
+    @markers = @tennis_courts.geocoded.map do |tennis_court|
+      {
+        lat: tennis_court.latitude,
+        lng: tennis_court.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { tennis_court: tennis_court })
+      }
+    end
   end
 
   def show
