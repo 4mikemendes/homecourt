@@ -1,17 +1,28 @@
 <h1><%= @tennis_court.court_name %></h1>
 <h5><%= @tennis_court.description %></h5>
 <p><%= @tennis_court.surface_type %></p>
-<p><%= @tennis_court.price_per_hour %></p>
+<p><%= "#{@tennis_court.price_per_hour}€" %></p>
 
 <div class="search">
   <div class="d-flex align-items-center">
+  <% if @tennis_court.user != current_user && @current_registration.nil?%>
     <nav class="navbar navbar-light">
-      <%= simple_form_for(booking_path, html:{ class:"form-inline" }) do |f| %>
-      <%= f.input :date, as: :string, input_html: {type: :date} %>
-      <%= f.input :beginning_time, as: :string, input_html: {type: :time} %>
-      <%= f.input :end_time, as: :string, input_html: {type: :time} %>
+      <%= simple_form_for([@tennis_court, @booking], html:{ class:"form-inline" }) do |f| %>
+      <%= f.input :beginning_date_time%>
+      <%= f.input :end_date_time, as: :string, input_html: {type: :time} %>
       <%= f.submit "Book now", class: "btn btn-primary ml-2" %>
       <% end %>
     </nav>
+  <% elsif @tennis_court.user == current_user%>
+  <% @tennis_court.bookings.each do |booking| %>
+      <%= booking.user.email  %>
+      <%= simple_form_for booking do |f| %>
+      <%= f.input :status, collection: ["accepted", "rejected"] %>
+      <%= f.submit  %>
+      <% end  %>
+      <% end  %>
+  <% else %>
+    <span class="badge"><%= @current_registration.status %></span>
+  <% end %>
   </div>
 </div>

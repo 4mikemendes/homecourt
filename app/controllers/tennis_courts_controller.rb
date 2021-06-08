@@ -19,15 +19,12 @@ class TennisCourtsController < ApplicationController
   def show
     @tennis_court = TennisCourt.find(params[:id])
     @booking = Booking.new
+    @schedule = Schedule.new
+    @current_registration = @tennis_court.bookings.find_by(user: current_user)
   end
 
   def new
     @tennis_court = TennisCourt.new
-  end
-
-  def show
-    @tennis_court = TennisCourt.find(params[:id])
-    @schedule = Schedule.new
   end
 
   def create
