@@ -1,25 +1,30 @@
 <h1>Book your court </h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<div class="d-flex justify-content-center">
-  <div class="flex-row">
-    <div class="row g-3">
-  <div class="col-sm-7">
-   <%= simple_form_for(@tennis_court) do |f| %>
-   <%= f.input :address %>
- </div>
- <div class="col-sm">
-  <%= f.input :created_at, as: :string, input_html: {type: :date} %>
+<div class="container">
+  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid" >
+     <form class="d-flex">
+      <div class="col-sm-7">
+       <%= simple_form_for(@tennis_court) do |f| %>
+       <%= f.input :address %>
+     </div>
+     <div class="col-sm">
+      <%= f.input :created_at, as: :string, input_html: {type: :date} %>
+    </div>
+    <div class="col-sm">
+      <%= f.input :created_at, as: :string, input_html: {type: :time} %>
+    </div>
+    <div class="col-sm">
+      <%= f.submit "search" %>
+      <% end %>
+    </div>
+  </form>
 </div>
-<div class="col-sm">
-  <%= f.input :created_at, as: :string, input_html: {type: :time} %>
+</nav>
 </div>
-<div class="col-sm">
-  <%= f.submit "search" %>
-  <% end %>
-</div>
-</div>
-  </div>
 
-</div>
+
+
+
 
