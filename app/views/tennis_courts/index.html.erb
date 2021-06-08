@@ -1,6 +1,8 @@
 <% @tennis_courts.each do |tennis_court| %>
-  <h1><%= tennis_court.name %></h1>
-  <h2><%= tennis_court.address %></h2>
-  <p><%= tennis_court.price_per_hour %></p>
-<% end %>
+  <div class="card">
+    <h1><%= tennis_court.court_name %></h1>
+    <h2><%= tennis_court.address %></h2>
+    <p><%= tennis_court.price_per_hour %></p>
+  <% end %>
+</div>
 
