@@ -1,12 +1,30 @@
-<% @tennis_courts.each do |tennis_court| %>
-  <div class="card">
-     <h1 class="card-title"> <%= tennis_court.court_name %></h1>
-     <h2><%= tennis_court.address %></h2>
-     <p><%= tennis_court.price_per_hour %></p>
-     <% end %>
-  </div>
+<div class="main-container">
+  <div class="row">
 
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    <div class="col-md-12 col-lg-6">
+        <h1>Result</h1>
+        <h2>list of tennis court around you</h2>
+      <% @tennis_courts.each do |tennis_court| %>
+        <div class="card-product">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <div class="card-product-infos">
+            <h1 class="card-title"> <%= tennis_court.court_name %></h1>
+            <h2><%= tennis_court.address %></h2>
+            <p><%= tennis_court.price_per_hour %></p>
+          </div>
+          <div class="button">
+            <p><%= link_to "More details", tennis_court, class: "btn btn-primary" %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-12 col-lg-6">
+      <div id="map"
+           style="height: 900px; width: 100%;"
+           data-markers="<%= @markers.to_json %>"
+           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    </div>
+
+  </div>
+</div>
