@@ -1,5 +1,6 @@
 class TennisCourtsController < ApplicationController
   def index
+    @tennis_court = TennisCourt.new
     @tennis_courts = TennisCourt.all
     @markers = @tennis_courts.geocoded.map do |tennis_court|
       {
@@ -10,15 +11,25 @@ class TennisCourtsController < ApplicationController
     end
   end
 
+  def show
+    @tennis_court = TennisCourt.find(params[:id])
+    @booking = Booking.new
+  end
+
   def new
     @tennis_court = TennisCourt.new
+  end
+
+  def show
+    @tennis_court = TennisCourt.find(params[:id])
+    @schedule = Schedule.new
   end
 
   def create
     @tennis_court = TennisCourt.new(tennis_court_params)
     @tennis_court.user = current_user
     if @tennis_court.save!
-      redirect_to tennis_court_path(@tennis_court)
+      redirect_to tennis_courts_path(@tennis_court)
     else
       render :new
     end
@@ -27,6 +38,7 @@ class TennisCourtsController < ApplicationController
   def destroy
     @tennis_court = TennisCourt.find(params[:id])
     @tennis_court.destroy
+    redirect_to tennis_courts_path
   end
 
   def edit
@@ -42,6 +54,6 @@ class TennisCourtsController < ApplicationController
   private
 
   def tennis_court_params
-    params.require(:tennis_court).permit(:court_name, :address, :price_per_hour, :description, :surface_type)
+    params.require(:tennis_court).permit(:court_name, :address, :price_per_hour, :description, :surface_type, photos: [])
   end
 end
