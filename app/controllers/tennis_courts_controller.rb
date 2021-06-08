@@ -1,5 +1,6 @@
 class TennisCourtsController < ApplicationController
   def index
+    @tennis_court = TennisCourt.new
     @tennis_courts = TennisCourt.all
   end
 
@@ -11,7 +12,7 @@ class TennisCourtsController < ApplicationController
     @tennis_court = TennisCourt.new(tennis_court_params)
     @tennis_court.user = current_user
     if @tennis_court.save!
-      redirect_to tennis_court_path(@tennis_court)
+      redirect_to tennis_courts_path(@tennis_court)
     else
       render :new
     end
@@ -20,6 +21,7 @@ class TennisCourtsController < ApplicationController
   def destroy
     @tennis_court = TennisCourt.find(params[:id])
     @tennis_court.destroy
+    redirect_to tennis_courts_path
   end
 
   def edit

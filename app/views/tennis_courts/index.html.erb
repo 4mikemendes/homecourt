@@ -1,14 +1,11 @@
-  <div class="cards">
     <% @tennis_courts.each do |tennis_court| %>
-    <div class="card m-2" style="widows:  18rem;">
+  <div class="card">
 
-    <div class="card-body flex-column">
       <h1 class="card-title"> <%= tennis_court.court_name %></h1>
 
       <h2><%= tennis_court.address %></h2>
       <p><%= tennis_court.price_per_hour %></p>
       <% end %>
     </div>
-  </div>
 
- </div>
+
