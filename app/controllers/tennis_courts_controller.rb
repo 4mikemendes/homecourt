@@ -35,6 +35,6 @@ class TennisCourtsController < ApplicationController
   private
 
   def tennis_court_params
-    params.require(:tennis_court).permit(:court_name, :address, :price_per_hour, :description, :surface_type)
+    params.require(:tennis_court).permit(:court_name, :address, :price_per_hour, :description, :surface_type, photos: [])
   end
 end
