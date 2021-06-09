@@ -5,6 +5,7 @@ class TennisCourt < ApplicationRecord
   has_many_attached :photos
   has_many :schedules
   has_many :bookings
+  has_many :reviews, dependent: :destroy
   include PgSearch::Model
   pg_search_scope :search_by_court_name_and_address,
     against: [ :court_name, :address, :description, :surface_type ],
