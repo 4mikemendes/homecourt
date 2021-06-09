@@ -1,17 +1,15 @@
 <div class="main-container">
-
-  <div class="row">
-    <div class="search-bar">
-      <%= form_tag tennis_courts_path, method: :get do %>
+    <div class="d-flex justify-content-between">
+      <%= form_tag tennis_courts_path, method: :get, class: "d-flex m-3" do %>
         <%= text_field_tag :query,
             params[:query],
             class: "form-control",
             placeholder: "Find a Tennis court"
         %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
+        <%= submit_tag "Search", class: "btn btn-primary ml-1" %>
       <% end %>
+      <%= link_to "Create new", new_tennis_court_path, class:"btn btn-primary m-3"%>
     </div>
-  </div>
   <div class="row">
     <div class="col-md-12 col-lg-6">
       <% @tennis_courts.each do |tennis_court| %>
@@ -20,7 +18,7 @@
               <% if tennis_court.photo.attached? %>
                 <%= cl_image_tag tennis_court.photo.key, crop: :fill %>
               <% else %>
-                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg">
+                <%= image_tag "no-photo-available-icon-8.jpg" %>
               <% end %>
           </div>
           <div class="card-product-infos">
@@ -29,7 +27,7 @@
             <p><%= "#{tennis_court.price_per_hour}€" %></p>
           </div>
           <div class="button">
-            <p><%= link_to "More details", tennis_court, class: "btn btn-primary" %></p>
+            <p><%= link_to "More details", tennis_court, class: "btn btn-primary"%></p>
           </div>
         </div>
       <% end %>
