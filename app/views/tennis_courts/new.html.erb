@@ -7,7 +7,7 @@
         <%= f.input :price_per_hour %>
         <%= f.input :surface_type, collection: [ "Clay", "Grass", "Hard", "Other"] %>
         <%= f.input :description %>
-        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <%= f.input :photo, as: :file %>
         <%= f.submit %>
         <% end %>
   </div>
