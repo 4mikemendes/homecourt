@@ -11,4 +11,8 @@ class TennisCourt < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+  validates :court_name, presence: true
+  validates :address, presence: true
+  validates :price_per_hour, presence: true
+  validates :surface_type, presence: true
 end
