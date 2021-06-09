@@ -1,22 +1,28 @@
 <div class="main-container">
 
-
+  <div class="row">
+    <div class="search-bar">
+      <%= form_tag tennis_courts_path, method: :get do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find a Tennis court"
+        %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-12 col-lg-6">
-      <div class="search-bar">
-        <%= form_tag tennis_courts_path, method: :get do %>
-          <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Find a Tennis court"
-          %>
-          <%= submit_tag "Search", class: "btn btn-primary" %>
-        <% end %>
-      </div>
-
       <% @tennis_courts.each do |tennis_court| %>
         <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <div class="card-product-photo">
+              <% if tennis_court.photo.attached? %>
+                <%= cl_image_tag tennis_court.photo.key, crop: :fill %>
+              <% else %>
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg">
+              <% end %>
+          </div>
           <div class="card-product-infos">
             <h1 class="card-title"> <%= tennis_court.court_name %></h1>
             <h2><%= tennis_court.address %></h2>
@@ -35,6 +41,5 @@
            data-markers="<%= @markers.to_json %>"
            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
-
   </div>
 </div>
