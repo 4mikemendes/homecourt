@@ -2,6 +2,10 @@
 <h5><%= @tennis_court.description %></h5>
 <p><%= @tennis_court.surface_type %></p>
 <p><%= "#{@tennis_court.price_per_hour}€" %></p>
+<% if @tennis_court.user == current_user %>
+  <small><%= link_to 'Edit', edit_tennis_court_path(@tennis_court) %></small>
+  <small><%= link_to 'Delete', tennis_court_path(@tennis_court), method: :delete, data: { confirm: 'Are you sure?' } %></small>
+<% end %>
 
 <div class="search">
   <div class="d-flex align-items-center">
