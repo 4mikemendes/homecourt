@@ -1,66 +1,72 @@
-<h1><%= @tennis_court.court_name %></h1>
-<h5><%= @tennis_court.description %></h5>
-<p><%= @tennis_court.surface_type %></p>
-<p><%= "#{@tennis_court.price_per_hour}€" %></p>
-<% if @tennis_court.user == current_user %>
-  <small><%= link_to 'Edit', edit_tennis_court_path(@tennis_court) %></small>
-  <small><%= link_to 'Delete', tennis_court_path(@tennis_court), method: :delete, data: { confirm: 'Are you sure?' } %></small>
-<% end %>
+<div class="container">
 
-<div class="search">
-  <div class="d-flex align-items-center">
-  <% if @tennis_court.user != current_user && @current_registration.nil?%>
-    <nav class="navbar navbar-light">
-      <%= simple_form_for([@tennis_court, @booking], html:{ class:"form-inline" }) do |f| %>
-      <%= f.input :beginning_date_time%>
-      <%= f.input :end_date_time, as: :string, input_html: {type: :time} %>
-      <%= f.submit "Book now", class: "btn btn-primary ml-2" %>
-      <% end %>
-    </nav>
-  <% elsif @tennis_court.user == current_user%>
-  <% @tennis_court.bookings.each do |booking| %>
+  <div class="search">
+    <div class="d-flex align-items-center">
+      <% if @tennis_court.user != current_user && @current_registration.nil?%>
+      <nav class="navbar navbar-light">
+        <%= simple_form_for([@tennis_court, @booking], html:{ class:"form-inline" }) do |f| %>
+        <%= f.input :beginning_date_time%>
+        <%= f.input :end_date_time, as: :string, input_html: {type: :time} %>
+        <%= f.submit "Book now", class: "btn btn-primary ml-2" %>
+        <% end %>
+      </nav>
+      <% elsif @tennis_court.user == current_user%>
+      <% @tennis_court.bookings.each do |booking| %>
       <%= booking.user.email  %>
       <%= simple_form_for booking do |f| %>
       <%= f.input :status, collection: ["accepted", "rejected"] %>
       <%= f.submit  %>
       <% end  %>
       <% end  %>
-  <% else %>
-    <span class="badge"><%= @current_registration.status %></span>
-  <% end %>
-  </div>
-</div>
-
- <div class="col-md-12 col-lg-6">
-      <div id="map"
-           style="height: 300px; width: 300px;"
-           data-markers="<%= @markers.to_json %>"
-           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+      <% else %>
+      <span class="badge"><%= @current_registration.status %></span>
+      <% end %>
     </div>
+  </div>
+
+  <div class="d-flex justify-content-center">
+   <div class="text">
+     <h1><%= @tennis_court.court_name %></h1>
+     <h5><%= @tennis_court.description %></h5>
+     <p><%= @tennis_court.surface_type %></p>
+     <p><%= "#{@tennis_court.price_per_hour}€" %></p>
+     <% if @tennis_court.user == current_user %>
+     <small><%= link_to 'Edit', edit_tennis_court_path(@tennis_court) %></small>
+     <small><%= link_to 'Delete', tennis_court_path(@tennis_court), method: :delete, data: { confirm: 'Are you sure?' } %></small>
+     <% end %>
+   </div>
+   <br>
+   <div id="map"
+   style="height: 300px; width: 50%;"
+   data-markers="<%= @markers.to_json %>"
+   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+ </div>
 
  <hr class="my-5">
-  <div class="row">
-    <div class="col-12 col-sm-6">
-      <h3>Reviews</h3>
-      <% if @tennis_court.reviews.empty? %>
-      <small><em class="text-muted">Be the first one to review this list</em></small>
-      <% end %>
-      <% @tennis_court.reviews.each do |review| %>
-      <div>
-        <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
-        <p class="mb-0"><%= review.content %></p>
-      </div>
-      <hr>
-      <% end %>
+ <div class="row">
+  <div class="col-12 col-sm-6">
+    <h3>Reviews</h3>
+    <% if @tennis_court.reviews.empty? %>
+    <small><em class="text-muted">Be the first one to review this list</em></small>
+    <% end %>
+    <% @tennis_court.reviews.each do |review| %>
+    <div>
+      <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
+      <p class="mb-0"><%= review.content %></p>
     </div>
-    <div class="col-12 col-sm-6">
-      <div class="bg-white rounded p-3">
-        <h5>Add your review</h5>
-        <%= simple_form_for [@tennis_court, @review] do |f| %>
-        <%= f.input :content, placeholder: 'Add your review here...' %>
-        <%= f.input :rating %>
-        <%= f.submit class:'btn btn-primary' %>
-        <% end %>
-      </div>
+    <hr>
+    <% end %>
+  </div>
+  <div class="col-12 col-sm-6">
+    <div class="bg-white rounded p-3">
+      <h5>Add your review</h5>
+      <%= simple_form_for [@tennis_court, @review] do |f| %>
+      <%= f.input :content, placeholder: 'Add your review here...' %>
+      <%= f.input :rating %>
+      <%= f.submit class:'btn btn-primary' %>
+      <% end %>
     </div>
   </div>
+</div>
+</div>
