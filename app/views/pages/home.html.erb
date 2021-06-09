@@ -1,24 +1,42 @@
-<h1>Book your court </h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dv3mbtcpg/image/upload/v1623164868/ryan-searle-qjrjJnFypa0-unsplash_pmqdxe.jpg);">
+  <div class="container">
+    <div class="toptext">
+      <div class="d-flex justify-content-center">
+      <nav class="navbar navbar-light">
+        <div class="d-flex flex-column bd-highlight mb-3">
+        <h1>Tennis courts near you</h1>
+        <h2>No yearly subcriptions</h2>
+        </div>
+      </nav>
+    </div>
+    </div>
+     <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="search">
+      <div class="d-flex align-items-center">
+        <nav class="navbar navbar-light">
+         <%= link_to "Discover all courts", tennis_courts_path, class:"btn btn-warning"  %>
+       </nav>
+     </div>
+   </div>
 
-<div class="search">
-<div class="d-flex align-items-center">
-  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-
-
-       <%= simple_form_for(@tennis_court, html:{ class:"form-inline" }) do |f| %>
-       <%= f.input :address %>
-
-      <%= f.input :created_at, as: :string, input_html: {type: :date} %>
-
-      <%= f.input :created_at, as: :string, input_html: {type: :time} %>
-
-      <%= f.submit "search" %>
-      <% end %>
-
-</nav>
+ </div>
 </div>
-</div>
+
+
+
 
 
 
