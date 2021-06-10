@@ -42,6 +42,13 @@
    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
  </div>
+   <div class="container">
+   <% if @tennis_court.photo.attached? %>
+    <%= cl_image_tag @tennis_court.photo.key, height: 300, width: 400 %>
+    <% else %>
+    <%= image_tag "no-photo-available-icon-8.jpg" %>
+    <% end %>
+    </div>
 
  <hr class="my-5">
  <div class="row">
