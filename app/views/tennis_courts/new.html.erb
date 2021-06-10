@@ -3,7 +3,7 @@
         <h3>Your Tennis Court</h3>
         <%= simple_form_for(@tennis_court) do |f| %>
         <%= f.input :court_name %>
-        <%= f.input :address %>
+        <%= f.input :address, id: "tennis_court_address" %>
         <%= f.input :price_per_hour %>
         <%= f.input :surface_type, collection: [ "Clay", "Grass", "Hard", "Other"] %>
         <%= f.input :description %>
