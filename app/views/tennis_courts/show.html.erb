@@ -80,7 +80,7 @@
       <h5>Add your review</h5>
       <%= simple_form_for [@tennis_court, @review] do |f| %>
       <%= f.input :content %>
-      <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
+      <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", id:"review_rating" %>
       <%= f.submit "Send your review" %>
       <% end %>
     </div>

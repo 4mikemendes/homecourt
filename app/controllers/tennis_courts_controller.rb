@@ -23,7 +23,7 @@ class TennisCourtsController < ApplicationController
     @schedule = Schedule.new
     @current_registration = @tennis_court.bookings.find_by(user: current_user)
     @markers = @tennis_court.geocode
-
+    raise
     # {
     #   lat: @tennis_court.latitude,
     #   lng: @tennis_court.longitude,
@@ -57,7 +57,7 @@ class TennisCourtsController < ApplicationController
 
   def update
     @tennis_court = TennisCourt.find(params[:id])
-    @tennis_court.update(tennis_court)
+    @tennis_court.update(tennis_court_params)
     redirect_to tennis_court_path(@tennis_court)
   end
 
