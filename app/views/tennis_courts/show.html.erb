@@ -2,24 +2,31 @@
 
   <div class="search">
     <div class="d-flex align-items-center">
-      <% if @tennis_court.user != current_user && @current_registration.nil?%>
+      <% if @tennis_court.user != current_user && @current_registration != nil%>
+      <span class="badge"><%= @current_registration.status %></span>
       <nav class="navbar navbar-light">
         <%= simple_form_for([@tennis_court, @booking], html:{ class:"form-inline" }) do |f| %>
         <%= f.input :beginning_date_time%>
         <%= f.input :end_date_time, as: :string, input_html: {type: :time} %>
         <%= f.submit "Book now", class: "btn btn-primary ml-2" %>
-        <% end %>
+          <% end %>
       </nav>
-      <% elsif @tennis_court.user == current_user%>
+      <% elsif @tennis_court.user == current_user %>
       <% @tennis_court.bookings.each do |booking| %>
       <%= booking.user.email  %>
       <%= simple_form_for booking do |f| %>
       <%= f.input :status, collection: ["accepted", "rejected"] %>
-      <%= f.submit  %>
-      <% end  %>
-      <% end  %>
+      <%= f.submit %>
+          <% end %>
+        <% end %>
       <% else %>
-      <span class="badge"><%= @current_registration.status %></span>
+      <nav class="navbar navbar-light">
+        <%= simple_form_for([@tennis_court, @booking], html:{ class:"form-inline" }) do |f| %>
+        <%= f.input :beginning_date_time%>
+        <%= f.input :end_date_time, as: :string, input_html: {type: :time} %>
+        <%= f.submit "Book now", class: "btn btn-primary ml-2" %>
+          <% end %>
+      </nav>
       <% end %>
     </div>
   </div>
@@ -40,7 +47,6 @@
    style="height: 300px; width: 50%;"
    data-markers="<%= @markers.to_json %>"
    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
  </div>
    <div class="container">
    <% if @tennis_court.photo.attached? %>
@@ -49,6 +55,8 @@
     <%= image_tag "no-photo-available-icon-8.jpg" %>
     <% end %>
     </div>
+
+ <%= link_to "Back to tennis courts", tennis_courts_path%>
 
  <hr class="my-5">
  <div class="row">

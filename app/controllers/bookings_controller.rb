@@ -6,10 +6,11 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.status = "pending"
     @booking.tennis_court = @tennis_court
-    if @booking.save!
+    if @booking.save
       redirect_to tennis_court_path(@tennis_court)
     else
-      render :new
+      @review = Review.new
+      render "tennis_courts/show"
     end
   end
 
