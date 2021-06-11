@@ -31,7 +31,7 @@ end
     address: Faker::Address.city,
     price_per_hour: Faker::Number.number(digits: 2),
     description: Faker::TvShows::DrWho.quote,
-    surface_type: Faker::Space.nebula
+    surface_type: Faker::TvShows::DrWho.quote,
     )
    tennis_court.photo.attach(io: file, filename: "name.jpg")
     tennis_court.save!
