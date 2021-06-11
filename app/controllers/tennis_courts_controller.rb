@@ -22,6 +22,7 @@ class TennisCourtsController < ApplicationController
     @booking = Booking.new
     @schedule = Schedule.new
     @current_registration = @tennis_court.bookings.find_by(user: current_user)
+
      @markers = [
       {
         lat: @tennis_court.latitude,
@@ -29,6 +30,7 @@ class TennisCourtsController < ApplicationController
         info_window: render_to_string(partial: "info_window", locals: { tennis_court: @tennis_court })
       }
     ]
+
   end
 
   def new
