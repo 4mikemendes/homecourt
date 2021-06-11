@@ -23,7 +23,7 @@ class TennisCourtsController < ApplicationController
     @schedule = Schedule.new
     @current_registration = @tennis_court.bookings.find_by(user: current_user)
     @markers = @tennis_court.geocode
-    raise
+    # raise
     # {
     #   lat: @tennis_court.latitude,
     #   lng: @tennis_court.longitude,
