@@ -1,0 +1,40 @@
+<div class="container">
+
+    <div class="row">
+      <h1><%= current_user.email%> Reservations </h1>
+    </div>
+    <div class="row">
+      <% @mybookings.each do |mybooking| %>
+        <%= mybooking.status %>
+        <%= mybooking.beginning_date_time %>
+        <%= mybooking.end_date_time %>
+      <% end %>
+    </div>
+
+    <div>
+      <div class="row">
+        <h1><%= current_user.email %> Tennis Courts</h1>
+        <div class="row">
+          <% @tennis_courts.each do |tennis_court| %>
+            <%= link_to tennis_court_path(tennis_court) do %>
+              <div class="card-product">
+                <div class="card-product-photo">
+                    <% if tennis_court.photo.attached? %>
+                      <%= cl_image_tag tennis_court.photo.key, crop: :fill %>
+                    <% else %>
+                      <%= image_tag "no-photo-available-icon-8.jpg" %>
+                    <% end %>
+                </div>
+                <div class="card-product-infos">
+                  <h1 class="card-title"> <%= tennis_court.court_name %></h1>
+                  <h2><%= tennis_court.address %></h2>
+                  <p><%= "#{tennis_court.price_per_hour}€" %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+</div>

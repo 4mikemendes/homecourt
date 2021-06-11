@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_one_attached :profile_picture
   validates :profile_picture, presence: true
   has_many :tennis_courts, dependent: :destroy
+  has_many :bookings, dependent: :destroy
 end
