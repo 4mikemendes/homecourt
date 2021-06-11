@@ -16,8 +16,11 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-    @booking.update(booking_params)
-    redirect_to tennis_court_path(@booking.tennis_court), notice: "status updated"
+    if @booking.update(booking_params)
+      redirect_to tennis_court_path(@booking.tennis_court), notice: "status updated"
+    else
+      redirect_to tennis_court_path(@booking.tennis_court), notice: "#{@booking.errors.messages}"
+    end
   end
 
   def booking_params

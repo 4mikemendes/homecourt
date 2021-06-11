@@ -26,7 +26,7 @@
       <% elsif @tennis_court.user == current_user %>
       <% @tennis_court.bookings.each do |booking| %>
       <%= booking.user.email  %>
-      <%= simple_form_for booking do |f| %>
+      <%= simple_form_for booking, method: :patch do |f| %>
       <%= f.input :status, collection: ["accepted", "rejected"] %>
       <%= f.submit %>
           <% end %>
