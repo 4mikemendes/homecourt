@@ -30,7 +30,6 @@ class TennisCourtsController < ApplicationController
         info_window: render_to_string(partial: "info_window", locals: { tennis_court: @tennis_court })
       }
     ]
-
   end
 
   def new
