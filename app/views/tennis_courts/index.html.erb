@@ -1,5 +1,5 @@
 <div class="main-container">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between ml-3">
       <%= form_tag tennis_courts_path, method: :get, class: "d-flex m-3" do %>
         <%= text_field_tag :query,
             params[:query],
@@ -10,9 +10,9 @@
       <% end %>
     </div>
   <div class="row">
-    <div class="col-md-12 col-lg-6">
+    <div class="col-md-12 col-lg-6" id="cards-container">
       <% @tennis_courts.each do |tennis_court| %>
-        <%= link_to tennis_court_path(tennis_court) do %>
+        <%= link_to tennis_court_path(tennis_court), class: "card-links" do %>
           <div class="card-product">
             <div class="card-product-photo">
                 <% if tennis_court.photo.attached? %>
@@ -23,8 +23,8 @@
             </div>
             <div class="card-product-infos">
               <h1 class="card-title"> <%= tennis_court.court_name %></h1>
-              <h2><%= tennis_court.address %></h2>
-              <p><%= "#{tennis_court.price_per_hour}€" %></p>
+              <p><%= tennis_court.address %></p>
+              <p> <strong><%= "#{tennis_court.price_per_hour}€" %></strong> </p>
             </div>
           </div>
         <% end %>

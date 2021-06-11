@@ -1,9 +1,7 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "show";
-.main-container {
-  background-color: white;
-}
+
 
 #map {
   position: sticky;
@@ -15,5 +13,10 @@
 }
 
 .card-product {
-  border-radius: 5px;
+  border-radius: 40px;
 }
+
+#cards-container a {
+  text-decoration: none;
+}
+
