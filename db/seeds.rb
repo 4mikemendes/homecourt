@@ -24,7 +24,8 @@ User.destroy_all
 end
 
 50.times do
-  TennisCourt.create!(
+    file = URI.open('https://source.unsplash.com/random')
+  tennis_court = TennisCourt.create!(
     user: User.first,
     court_name: Faker::Books::Dune.planet,
     address: Faker::Address.city,
@@ -32,6 +33,7 @@ end
     description: Faker::TvShows::DrWho.quote,
     surface_type: Faker::Space.nebula
     )
-
+   tennis_court.photo.attach(io: file, filename: "name.jpg")
+    tennis_court.save!
 end
 
