@@ -39,3 +39,5 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   initStarRating();
 })
+
+import 'plugins/flatpickr'
