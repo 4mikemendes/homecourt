@@ -10,7 +10,7 @@ require "open-uri"
 User.destroy_all
 
 50.times do
-  file = URI.open('https://source.unsplash.com/random')
+  file = URI.open('https://unsplash.com/s/photos/tennis-court')
   user = User.new(
     email: Faker::Internet.email,
     password: "123456",
@@ -24,7 +24,7 @@ User.destroy_all
 end
 
 50.times do
-    file = URI.open('https://source.unsplash.com/random')
+    file = URI.open('https://unsplash.com/s/photos/portrait')
   tennis_court = TennisCourt.create!(
     user: User.first,
     court_name: Faker::Books::Dune.planet,
