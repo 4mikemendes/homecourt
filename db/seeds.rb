@@ -10,7 +10,7 @@ require "open-uri"
 User.destroy_all
 
 50.times do
-  file = URI.open('https://source.unsplash.com/random')
+  file = URI.open('https://source.unsplash.com/search/photos?query=tennis-courts')
   user = User.new(
     email: Faker::Internet.email,
     password: "123456",
