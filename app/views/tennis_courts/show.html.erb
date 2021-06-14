@@ -15,8 +15,10 @@
   <div class="row search">
     <div class="d-flex align-items-center">
       <% if @tennis_court.user != current_user && @current_registration != nil%>
-      <span class="badge"><%= @current_registration.status %></span>
-      <nav class="navbar navbar-light">
+      <div>
+        <span class="badge <%= @current_registration.badge_status %>"><%= @current_registration.status %></span>
+
+      </div>      <nav class="navbar navbar-light">
         <%= simple_form_for([@tennis_court, @booking], html:{ class:"form-inline" }) do |f| %>
         <%= f.input :beginning_date_time, as: :string%>
         <%= f.input :end_date_time, as: :string %>
@@ -32,6 +34,7 @@
       <% end %>
       <% end %>
       <% else %>
+
       <nav class="navbar navbar-light">
         <%= simple_form_for([@tennis_court, @booking], html:{ class:"form-inline" }) do |f| %>
         <%= f.input :beginning_date_time, as: :string, input_html: {type: :date} %>
