@@ -1,4 +1,7 @@
 class TennisCourtsController < ApplicationController
+
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @tennis_court = TennisCourt.new
     @tennis_courts = TennisCourt.all
