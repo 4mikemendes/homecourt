@@ -32,7 +32,7 @@
     </div>
 
     <div class="col-md-12 col-lg-6">
-      <div id="map"
+      <div id="map" class="position-sticky"
            style="height: 900px; width: 100%;"
            data-markers="<%= @markers.to_json %>"
            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
