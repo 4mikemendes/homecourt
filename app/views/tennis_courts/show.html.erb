@@ -1,13 +1,13 @@
   <div class="d-flex justify-content-center">
     <% if @tennis_court.photo.attached? %>
-      <div class="image-container" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @tennis_court.photo.key, height: 300, width: 400, crop: :fill %>')">
-         <div class="text">
-         <h1><%= @tennis_court.court_name %></h1>
-       </div>
-      </div>
-    <% else %>
-      <%= image_tag "no-photo-available-icon-8.jpg" %>
-    <% end %>
+    <div class="image-container" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @tennis_court.photo.key, height: 300, width: 400, crop: :fill %>')">
+     <div class="text">
+       <h1><%= @tennis_court.court_name %></h1>
+     </div>
+   </div>
+   <% else %>
+   <%= image_tag "no-photo-available-icon-8.jpg" %>
+   <% end %>
    <br>
  </div>
 
@@ -18,10 +18,10 @@
       <span class="badge"><%= @current_registration.status %></span>
       <nav class="navbar navbar-light">
         <%= simple_form_for([@tennis_court, @booking], html:{ class:"form-inline" }) do |f| %>
-        <%= f.input :beginning_date_time%>
-        <%= f.input :end_date_time, as: :string, input_html: {type: :time} %>
+        <%= f.input :beginning_date_time, as: :string%>
+        <%= f.input :end_date_time, as: :string %>
         <%= f.submit "Book now", class: "btn btn-primary ml-2" %>
-          <% end %>
+        <% end %>
       </nav>
       <% elsif @tennis_court.user == current_user %>
       <% @tennis_court.bookings.each do |booking| %>
@@ -29,19 +29,20 @@
       <%= simple_form_for booking, method: :patch do |f| %>
       <%= f.input :status, collection: ["accepted", "rejected"] %>
       <%= f.submit %>
-          <% end %>
-        <% end %>
+      <% end %>
+      <% end %>
       <% else %>
       <nav class="navbar navbar-light">
         <%= simple_form_for([@tennis_court, @booking], html:{ class:"form-inline" }) do |f| %>
-        <%= f.input :beginning_date_time%>
-        <%= f.input :end_date_time, as: :string, input_html: {type: :time} %>
+        <%= f.input :beginning_date_time, as: :string, input_html: {type: :date} %>
+        <%= f.input :end_date_time, as: :string, input_html: {type: :date} %>
         <%= f.submit "Book now", class: "btn btn-warning ml-1" %>
-          <% end %>
+        <% end %>
       </nav>
       <% end %>
     </div>
   </div>
+
 <div class="row pb-3 mt-4">
   <div class="col-6">
     <h5><%= @tennis_court.description %></h5>
@@ -83,6 +84,15 @@
       <%= f.submit "Send your review" %>
       <% end %>
     </div>
+    <div class="col-12 col-sm-6">
+      <div class="bg-white rounded p-3">
+        <h5>Add your review</h5>
+        <%= simple_form_for [@tennis_court, @review] do |f| %>
+        <%= f.input :content %>
+        <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", id:"review_rating" %>
+        <%= f.submit "Send your review" %>
+        <% end %>
+      </div>
+    </div>
   </div>
-</div>
 </div>

@@ -1,40 +1,78 @@
 <div class="container">
 
-    <div class="row">
-      <h1><%= current_user.email%> Reservations </h1>
-    </div>
-    <div class="row">
-      <% @mybookings.each do |mybooking| %>
-        <%= mybooking.status %>
-        <%= mybooking.beginning_date_time %>
-        <%= mybooking.end_date_time %>
-      <% end %>
-    </div>
-
-    <div>
+  <div>
       <div class="row">
-        <h1><%= current_user.email %> Tennis Courts</h1>
+        <h1>How much money you made as a Host</h1>
+      </div>
+
+      <% @tennis_courts.each do |tennis_court| %>
         <div class="row">
-          <% @tennis_courts.each do |tennis_court| %>
-            <%= link_to tennis_court_path(tennis_court) do %>
-              <div class="card-product">
-                <div class="card-product-photo">
-                    <% if tennis_court.photo.attached? %>
-                      <%= cl_image_tag tennis_court.photo.key, crop: :fill %>
-                    <% else %>
-                      <%= image_tag "no-photo-available-icon-8.jpg" %>
-                    <% end %>
-                </div>
-                <div class="card-product-infos">
-                  <h1 class="card-title"> <%= tennis_court.court_name %></h1>
-                  <h2><%= tennis_court.address %></h2>
-                  <p><%= "#{tennis_court.price_per_hour}€" %></p>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
+          <li><%= tennis_court.court_name%>: <%= tennis_court.total_booked_hours * tennis_court.price_per_hour %> € </li>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <h1><%= current_user.email %> Hosting Summary </h1>
+      </div>
+
+      <% @tennis_courts.each do |tennis_court| %>
+        <% tennis_court.bookings.each do |booking| %>
+          <ul>
+            <li><%= booking.tennis_court.court_name %>: <%= booking.status %></li>
+            <li><%= booking.user.email %></li>
+            <li><%= booking.beginning_date_time %></li>
+            <li><%= booking.end_date_time %></li>
+            <p>------------------------------------------------------------------</p>
+          </ul>
+        <% end %>
+      <% end %>
+        <div>
+          <div class="row">
+            <h1><%= current_user.email %> Tennis Courts</h1>
+            <div class="row">
+              <% @tennis_courts.each do |tennis_court| %>
+               <%= link_to tennis_court_path(tennis_court) do %>
+                  <div class="card-product">
+                    <div class="card-product-photo">
+                        <% if tennis_court.photo.attached? %>
+                          <%= cl_image_tag tennis_court.photo.key, crop: :fill %>
+                        <% else %>
+                          <%= image_tag "no-photo-available-icon-8.jpg" %>
+                        <% end %>
+                    </div>
+                    <div class="card-product-infos">
+                      <h1 class="card-title"> <%= tennis_court.court_name %></h1>
+                      <h2><%= tennis_court.address %></h2>
+                      <p><%= "#{tennis_court.price_per_hour}€" %></p>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+  </div>
+
+
+    <div class="row">
+      <h1><%= current_user.email%> Bookings </h1>
+    </div>
+    <% @mybookings.each do |mybooking| %>
+      <div class="row">
+        <div class="card-product">
+          <div class="card-product-photo">
+            <%= image_tag "no-photo-available-icon-8.jpg" %>
+          </div>
+          <div class="card-product-infos">
+            <h1><%= mybooking.status %></h1>
+            <ul>
+              <li> <%= mybooking.beginning_date_time %> </li>
+              <li> <%= mybooking.end_date_time %> </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
+
 
 </div>
