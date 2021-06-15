@@ -73,8 +73,10 @@ ActiveRecord::Schema.define(version: 2021_06_15_090812) do
     t.string "checkout_session_id"
     t.bigint "user_id", null: false
     t.bigint "tennis_court_id", null: false
+    t.bigint "booking_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["booking_id"], name: "index_orders_on_booking_id"
     t.index ["tennis_court_id"], name: "index_orders_on_tennis_court_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -135,6 +137,7 @@ ActiveRecord::Schema.define(version: 2021_06_15_090812) do
   add_foreign_key "chatrooms", "bookings"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "orders", "bookings"
   add_foreign_key "orders", "tennis_courts"
   add_foreign_key "orders", "users"
   add_foreign_key "reviews", "tennis_courts"
