@@ -13,14 +13,14 @@
       <% end %>
 
       <div class="row">
-        <h1><%= current_user.email %> Hosting Summary </h1>
+        <h1><%= current_user.first_name %> Hosting Summary </h1>
       </div>
 
       <% @tennis_courts.each do |tennis_court| %>
         <% tennis_court.bookings.each do |booking| %>
           <ul>
             <li><%= booking.tennis_court.court_name %>: <%= booking.status %></li>
-            <li><%= booking.user.email %></li>
+            <li><%= booking.user.first_name %></li>
             <li><%= booking.beginning_date_time %></li>
             <li><%= booking.end_date_time %></li>
             <p>------------------------------------------------------------------</p>
@@ -29,7 +29,7 @@
       <% end %>
         <div>
           <div class="row">
-            <h1><%= current_user.email %> Tennis Courts</h1>
+            <h1><%= current_user.first_name %> Tennis Courts</h1>
             <div class="row">
               <% @tennis_courts.each do |tennis_court| %>
                <%= link_to tennis_court_path(tennis_court) do %>
