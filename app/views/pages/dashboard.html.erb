@@ -1,36 +1,68 @@
-<div class="container">
+<div class="main-container">
 
-  <% if current_user.tennis_courts.present? %>
-    <div>
-      <div class="row">
-        <h1>How much money you made as a Host</h1>
-      </div>
+  <div class="row">
 
-      <% @tennis_courts.each do |tennis_court| %>
-        <div class="row">
-          <li><%= tennis_court.court_name%>: <%= tennis_court.total_booked_hours * tennis_court.price_per_hour %> € </li>
-        </div>
+    <div class="col-md-12 col-lg-6">
+      <div class="dashboard-stat">
+        <h1>Hello <%= current_user.first_name%> these are your bookings </h1>
+        <% @mybookings.each do |mybooking| %>
+            <div class="card-product">
+              <div class="card-product-photo">
+                <%= image_tag "no-photo-available-icon-8.jpg" %>
+              </div>
+              <div class="card-product-infos">
+                <h1><%= mybooking.status %></h1>
+                <ul>
+                  <li> <%= mybooking.beginning_date_time %> </li>
+                  <li> <%= mybooking.end_date_time %> </li>
+                </ul>
+                <%= link_to 'chat-room', chatroom_path(mybooking.chatrooms.first) %>
+              </div>
+            </div>
       <% end %>
-
-      <div class="row">
-        <h1><%= current_user.email %> Hosting Summary </h1>
       </div>
+    </div>
 
-      <% @tennis_courts.each do |tennis_court| %>
-        <% tennis_court.bookings.each do |booking| %>
-          <ul>
-            <li><%= booking.tennis_court.court_name %>: <%= booking.status %></li>
-            <li><%= booking.user.email %></li>
-            <li><%= booking.beginning_date_time %></li>
-            <li><%= booking.end_date_time %></li>
-            <p>------------------------------------------------------------------</p>
-          </ul>
-        <% end %>
-      <% end %>
-        <div>
-          <div class="row">
-            <h1><%= current_user.email %> Tennis Courts</h1>
-            <div class="row">
+
+
+    <div class="col-md-12 col-lg-6">
+        <% if current_user.tennis_courts.present? %>
+          <div class="dashboard-stat">
+            <h1>How much money you made as a Host</h1>
+            <% @tennis_courts.each do |tennis_court| %>
+              <div>
+                <li><%= tennis_court.court_name%>: <%= tennis_court.total_booked_hours * tennis_court.price_per_hour %> € </li>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="dashboard-stat">
+            <h1><%= current_user.first_name %> Hosting Summary </h1>
+            <% @tennis_courts.each do |tennis_court| %>
+              <% tennis_court.bookings.each do |booking| %>
+                <div class="card-product">
+                  <div class="card-product-photo">
+                        <% if tennis_court.photo.attached? %>
+                          <%= cl_image_tag tennis_court.photo.key, crop: :fill %>
+                        <% else %>
+                          <%= image_tag "no-photo-available-icon-8.jpg" %>
+                        <% end %>
+                    </div>
+                  <div class="card-product-infos">
+                    <h2><%= booking.tennis_court.court_name %></h2>
+                    <p><strong>status: <%= booking.status %></strong></p>
+                    <p><%= booking.user.email %></p>
+                    <p><%= booking.beginning_date_time %></p>
+                    <p><%= booking.end_date_time %></p>
+                    <%= link_to 'chat-room', chatroom_path(booking.chatrooms.first) %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="dashboard-stat">
+            <h1><%= current_user.first_name %> Tennis Courts</h1>
               <% @tennis_courts.each do |tennis_court| %>
                <%= link_to tennis_court_path(tennis_court) do %>
                   <div class="card-product">
@@ -49,32 +81,9 @@
                   </div>
                 <% end %>
               <% end %>
-            </div>
           </div>
-        </div>
-  </div>
-  <% end %>
-
-    <div class="row">
-      <h1>Hello <%= current_user.first_name%> these are your bookings </h1>
-    </div>
-    <% @mybookings.each do |mybooking| %>
-      <div class="row">
-        <div class="card-product">
-          <div class="card-product-photo">
-            <%= image_tag "no-photo-available-icon-8.jpg" %>
-          </div>
-          <div class="card-product-infos">
-            <h1><%= mybooking.status %></h1>
-            <ul>
-              <li> <%= mybooking.beginning_date_time %> </li>
-              <li> <%= mybooking.end_date_time %> </li>
-            </ul>
-            <%= link_to 'chat-room', chatroom_path(mybooking.chatrooms.first) %>
-          </div>
-        </div>
+        <% end %>
       </div>
-    <% end %>
 
-
+  </div>
 </div>
