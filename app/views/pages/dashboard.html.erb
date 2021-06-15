@@ -1,6 +1,7 @@
 <div class="container">
 
-  <div>
+  <% if current_user.tennis_courts.present? %>
+    <div>
       <div class="row">
         <h1>How much money you made as a Host</h1>
       </div>
@@ -52,10 +53,10 @@
           </div>
         </div>
   </div>
-
+  <% end %>
 
     <div class="row">
-      <h1><%= current_user.email%> Bookings </h1>
+      <h1>Hello <%= current_user.first_name%> these are your bookings </h1>
     </div>
     <% @mybookings.each do |mybooking| %>
       <div class="row">
