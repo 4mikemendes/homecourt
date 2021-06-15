@@ -6,6 +6,10 @@
       <div class="dashboard-stat">
         <h1>Hello <%= current_user.first_name%> these are your bookings </h1>
         <% @mybookings.each do |mybooking| %>
+        <%= form_tag  booking_orders_path(mybooking) do %>
+        <%= hidden_field_tag 'booking_id', mybooking.id %>
+        <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+        <% end %>
             <div class="card-product">
               <div class="card-product-photo">
                 <%= image_tag "no-photo-available-icon-8.jpg" %>
