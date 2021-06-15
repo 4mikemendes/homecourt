@@ -70,7 +70,7 @@
               <li> <%= mybooking.beginning_date_time %> </li>
               <li> <%= mybooking.end_date_time %> </li>
             </ul>
-            <%= link_to 'chat-room', booking_chatroom_path(mybooking, mybooking.chatrooms.first) %>
+            <%= link_to 'chat-room', chatroom_path(mybooking.chatrooms.first) %>
           </div>
         </div>
       </div>
