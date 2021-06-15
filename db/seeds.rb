@@ -9,8 +9,8 @@ require 'faker'
 require "open-uri"
 User.destroy_all
 
-50.times do
-  file = URI.open('https://www.scarsdalegolfclub.org/Images/Library/platformtenniscallout.jpg')
+10.times do
+  file = URI.open('https://source.unsplash.com/1600x900/?tennis')
   user = User.new(
     email: Faker::Internet.email,
     password: "123456",
@@ -23,8 +23,8 @@ User.destroy_all
 
 end
 
-50.times do
-    file = URI.open('https://source.unsplash.com/random')
+10.times do
+    file = URI.open('https://source.unsplash.com/1600x900/?tennis')
     tennis_court = TennisCourt.create!(
     user: User.first,
     court_name: Faker::Books::Dune.planet,
