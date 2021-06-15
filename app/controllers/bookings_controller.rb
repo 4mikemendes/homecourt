@@ -7,6 +7,7 @@ class BookingsController < ApplicationController
     @booking.status = "pending"
     @booking.tennis_court = @tennis_court
     if @booking.save
+      @chatroom = Chatroom.create(booking: @booking)
       redirect_to tennis_court_path(@tennis_court)
     else
       @review = Review.new
