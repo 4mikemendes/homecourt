@@ -26,4 +26,6 @@ class TennisCourt < ApplicationRecord
     end
     return total
   end
+
+  monetize :price_cents
 end
