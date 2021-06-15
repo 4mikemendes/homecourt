@@ -1,8 +1,8 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :tennis_court
+  has_many :chatrooms
   validate :check_no_overlaping_date_ranges
-
   validates :tennis_court, :user, presence: true
   def badge_status
     if status == "pending"
@@ -25,5 +25,4 @@ class Booking < ApplicationRecord
       end
     end
   end
-
 end
