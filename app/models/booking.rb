@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :tennis_court
-  has_many :chatrooms
+  has_many :chatrooms, dependent: :destroy
   validate :check_no_overlaping_date_ranges
   validates :tennis_court, :user, presence: true
   def badge_status
