@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_09_100232) do
+ActiveRecord::Schema.define(version: 2021_06_15_090222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,19 @@ ActiveRecord::Schema.define(version: 2021_06_09_100232) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.string "tennis_court_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "checkout_session_id"
+    t.bigint "user_id", null: false
+    t.bigint "tennis_court_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tennis_court_id"], name: "index_orders_on_tennis_court_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.text "content"
     t.integer "rating"
@@ -78,6 +91,7 @@ ActiveRecord::Schema.define(version: 2021_06_09_100232) do
     t.datetime "updated_at", precision: 6, null: false
     t.float "latitude"
     t.float "longitude"
+    t.integer "price_cents", default: 0, null: false
     t.index ["user_id"], name: "index_tennis_courts_on_user_id"
   end
 
@@ -100,6 +114,8 @@ ActiveRecord::Schema.define(version: 2021_06_09_100232) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "tennis_courts"
   add_foreign_key "bookings", "users"
+  add_foreign_key "orders", "tennis_courts"
+  add_foreign_key "orders", "users"
   add_foreign_key "reviews", "tennis_courts"
   add_foreign_key "reviews", "users"
   add_foreign_key "schedules", "tennis_courts"

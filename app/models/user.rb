@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :profile_picture, presence: true
   has_many :tennis_courts, dependent: :destroy
   has_many :bookings, dependent: :destroy
+  has_many :orders
 end
