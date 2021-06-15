@@ -2,6 +2,10 @@ import flatpickr from "flatpickr";
 import 'flatpickr/dist/themes/airbnb.css'
 import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
 
+
+const initflatpickr = () => {
+
+
   flatpickr("#booking_beginning_date_time", {
     altInput: true,
      enableTime: true,
@@ -15,3 +19,6 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
 
   });
 
+}
+
+export {initflatpickr}

@@ -28,6 +28,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 
 import { initStarRating } from '../plugins/init_star_rating';
 
+import {initflatpickr} from '../plugins/flatpickr';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 
 
@@ -38,6 +39,6 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
   initStarRating();
+  initflatpickr();
 })
 
-import 'plugins/flatpickr'
