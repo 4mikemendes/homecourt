@@ -25,4 +25,13 @@ class Booking < ApplicationRecord
       end
     end
   end
+
+  def hours
+    dif = self.end_date_time - self.beginning_date_time
+    dif = dif / 60 / 60
+  end
+
+  def price
+    tennis_court.price * self.hours.to_i
+  end
 end

@@ -24,9 +24,10 @@
     </div>
 
 
-
     <div class="col-md-12 col-lg-6">
+      
         <% if current_user.tennis_courts.present? %>
+      
           <div class="dashboard-stat">
             <h1>How much money you made as a Host</h1>
             <% @tennis_courts.each do |tennis_court| %>
@@ -51,7 +52,7 @@
                   <div class="card-product-infos">
                     <h2><%= booking.tennis_court.court_name %></h2>
                     <p><strong>status: <%= booking.status %></strong></p>
-                    <p><%= booking.user.email %></p>
+                    <p><%= booking.user.first_name %></p>
                     <p><%= booking.beginning_date_time %></p>
                     <p><%= booking.end_date_time %></p>
                     <%= link_to 'chat-room', chatroom_path(booking.chatrooms.first) %>
@@ -82,8 +83,8 @@
                 <% end %>
               <% end %>
           </div>
-        <% end %>
-      </div>
-
-  </div>
+ 
+    </div>
+  </div> 
 </div>
+ 
