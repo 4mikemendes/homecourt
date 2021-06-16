@@ -1,41 +1,35 @@
-.card-product {
+.card-host {
   overflow: hidden;
-  height: 240px;
+  height: 120px;
   background: white;
   color: black;
-  border-bottom: 1px solid rgba(220, 220, 220, 0.9);
+  border-radius: 20px;
+  border: 1px solid rgba(220, 220, 220, 0.9);
   display: flex;
   align-items: center;
   margin: 20px;
 }
 
-.card-product:hover {
+.card-host:hover {
   text-decoration: none;
   box-shadow: 0 10px 30px rgba(0,0,0,.1);
 }
 
-.card-product img {
-  height: 180px;
-  width: 180px;
-  border-radius: 5px;
-  margin: 20px;
-}
-
-.card-product h1 {
+.card-host h1 {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 5px;
   color: black;
 }
 
-.card-product h2 {
+.card-host h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
   color: black;
 }
 
-.card-product p {
+.card-host p {
   font-size: 12px;
   line-height: 1.4;
   opacity: .7;
@@ -44,7 +38,6 @@
   color: black;
 }
 
-.card-product .card-product-infos {
+.card-host .card-host-infos {
   padding: 16px;
 }
-
