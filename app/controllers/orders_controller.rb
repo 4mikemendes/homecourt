@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
     payment_method_types: ['card'],
     line_items: [{
       name: booking.tennis_court.court_name,
-      amount: booking.tennis_court.price_cents,
+      amount: booking.tennis_court.price_per_hour * 100,
       currency: 'eur',
       quantity: booking.hours.to_i
     }],

@@ -32,6 +32,6 @@ class Booking < ApplicationRecord
   end
 
   def price
-    tennis_court.price * self.hours.to_i
+    tennis_court.price_per_hour * 100 * self.hours.to_i
   end
 end
