@@ -15,11 +15,10 @@
                 <%= image_tag "no-photo-available-icon-8.jpg" %>
               </div>
               <div class="card-product-infos">
-                <h1><%= mybooking.status %></h1>
-                <ul>
-                  <li> <%= mybooking.beginning_date_time %> </li>
-                  <li> <%= mybooking.end_date_time %> </li>
-                </ul>
+                <h1>Reservation for <%= mybooking.tennis_court.court_name %></h1>
+                <p>Status: <strong><%= mybooking.status %></strong></p>
+                <p><strong><%= mybooking.beginning_date_time.strftime("%b %e from %l:%M%p")%></strong>
+                  <strong><%= mybooking.end_date_time.strftime("to %l:%M%p") %></strong></p>
                 <%= link_to 'chat-room', chatroom_path(mybooking.chatrooms.first) %>
               </div>
             </div>
@@ -33,10 +32,11 @@
         <% if current_user.tennis_courts.present? %>
       
           <div class="dashboard-stat">
-            <h1>How much money you made as a Host</h1>
+            <h1><%= current_user.first_name %> stat as a Host </h1>
             <% @tennis_courts.each do |tennis_court| %>
               <div>
-                <li><%= tennis_court.court_name%>: <%= tennis_court.total_booked_hours * tennis_court.price_per_hour %> € </li>
+                <h2>How much money you made as a host</h2>
+                <p><%= tennis_court.court_name%>: <%= tennis_court.total_booked_hours * tennis_court.price_per_hour %> € </p>
               </div>
             <% end %>
           </div>
@@ -57,8 +57,8 @@
                     <h2><%= booking.tennis_court.court_name %></h2>
                     <p><strong>status: <%= booking.status %></strong></p>
                     <p><%= booking.user.first_name %></p>
-                    <p><%= booking.beginning_date_time %></p>
-                    <p><%= booking.end_date_time %></p>
+                    <p><%= booking.beginning_date_time.strftime("%b %e from %l:%M%p") %>
+                      <%= booking.end_date_time.strftime("to %l:%M%p") %></p>
                     <%= link_to 'chat-room', chatroom_path(booking.chatrooms.first) %>
                   </div>
                 </div>
