@@ -5,10 +5,9 @@
       <ul class="list-unstyled">
         <li><strong>ISSUED ON</strong> <%= @order.created_at.to_date %></li>
         <li><strong>TENNIS COURT</strong> <%= @order.tennis_court.court_name %> [<%= @order.tennis_court_sku %>]</li>
-        <li><strong>TOTAL</strong> <%= humanized_money_with_symbol @order.amount %></li>
+        <li><strong>TOTAL</strong> <%= humanized_money_with_symbol @order.amount / 100 %></li>
         </li>
       </ul>
-      <p>Estimated delivery in <strong>2 business days</strong></p>
     </div>
   </div>
 </div>

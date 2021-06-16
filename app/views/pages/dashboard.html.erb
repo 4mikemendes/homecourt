@@ -8,7 +8,7 @@
         <% @mybookings.each do |mybooking| %>
         <%= form_tag  booking_orders_path(mybooking) do %>
         <%= hidden_field_tag 'booking_id', mybooking.id %>
-        <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+        <%= submit_tag 'Purchase', class: 'btn btn-warning' %>
         <% end %>
             <div class="card-product">
               <div class="card-product-photo">
