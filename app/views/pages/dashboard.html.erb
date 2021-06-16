@@ -48,15 +48,9 @@
                     <strong><%= mybooking.end_date_time.strftime("to %l:%M%p") %></strong></p>
                   <%= link_to 'chat-room', chatroom_path(mybooking.chatrooms.first) %>
                 </div>
-                <div>
-                  <%= form_tag  booking_orders_path(mybooking) do %>
-                  <%= hidden_field_tag 'booking_id', mybooking.id %>
-                  <%= submit_tag 'Purchase', class: 'btn btn-warning' %>
-                  <% end %>
-                </div>
-              </div>
-        <% end %>
 
+              </div>
+          <% end %>
         <% end %>
       </div>
     </div>
