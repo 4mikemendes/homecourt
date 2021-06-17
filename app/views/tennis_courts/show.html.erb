@@ -24,8 +24,8 @@
       </div>
       <nav class="navbar navbar-light">
         <%= simple_form_for([@tennis_court, @booking], html:{ class:"form-inline" }) do |f| %>
-        <%= f.input :beginning_date_time, label: "From", as: :string, input_html: {type: :date, class: "m-2"}%>
-        <%= f.input :end_date_time, label: "Untill", as: :string input_html: {type: :date, class: "ml-2"}%>
+        <%= f.input :beginning_date_time, label: "From", as: :string%>
+        <%= f.input :end_date_time, label: "Untill", as: :string%>
         <%= f.submit "Book now", class: "btn btn-warning ml-1" %>
         <% end %>
       </nav>
