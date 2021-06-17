@@ -1,0 +1,7 @@
+# config/meta.yml
+
+meta_product_name: "Homecourt"
+meta_title: "Homecourt - tennis airbnb"
+meta_description: "Rent a tennis court"
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
