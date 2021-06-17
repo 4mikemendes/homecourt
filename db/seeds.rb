@@ -5,35 +5,35 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require 'faker'
-require "open-uri"
-User.destroy_all
+# require 'faker'
+# require "open-uri"
+# User.destroy_all
 
-10.times do
-  file = URI.open('https://source.unsplash.com/1600x900/?tennis')
-  user = User.new(
-    email: Faker::Internet.email,
-    password: "123456",
-    updated_at: Faker::Date.in_date_period,
-    description: Faker::TvShows::RickAndMorty.quote,
-    ranking: Faker::Alphanumeric.alpha(number: 5)
-    )
-    user.profile_picture.attach(io: file, filename: "name.jpg")
-    user.save!
+# 10.times do
+#   file = URI.open('https://source.unsplash.com/1600x900/?tennis')
+#   user = User.new(
+#     email: Faker::Internet.email,
+#     password: "123456",
+#     updated_at: Faker::Date.in_date_period,
+#     description: Faker::TvShows::RickAndMorty.quote,
+#     ranking: Faker::Alphanumeric.alpha(number: 5)
+#     )
+#     user.profile_picture.attach(io: file, filename: "name.jpg")
+#     user.save!
 
-end
+# end
 
-10.times do
-    file = URI.open('https://source.unsplash.com/1600x900/?tennis')
-    tennis_court = TennisCourt.create!(
-    user: User.first,
-    court_name: Faker::Books::Dune.planet,
-    address: Faker::Address.city,
-    price_per_hour: Faker::Number.number(digits: 2),
-    description: Faker::TvShows::DrWho.quote,
-    surface_type: Faker::TvShows::DrWho.quote,
-    )
-   tennis_court.photo.attach(io: file, filename: "name.jpg")
-    tennis_court.save!
-end
+# 10.times do
+#     file = URI.open('https://source.unsplash.com/1600x900/?tennis')
+#     tennis_court = TennisCourt.create!(
+#     user: User.first,
+#     court_name: Faker::Books::Dune.planet,
+#     address: Faker::Address.city,
+#     price_per_hour: Faker::Number.number(digits: 2),
+#     description: Faker::TvShows::DrWho.quote,
+#     surface_type: Faker::TvShows::DrWho.quote,
+#     )
+#    tennis_court.photo.attach(io: file, filename: "name.jpg")
+#     tennis_court.save!
+# end
 
