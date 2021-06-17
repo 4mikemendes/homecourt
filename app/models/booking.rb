@@ -19,6 +19,7 @@ class Booking < ApplicationRecord
       errors.add(:end_date_time, "Court not available at this time")
     end
     tennis_court.bookings.each do |booking|
+      next if booking == self
       if (booking.beginning_date_time..booking.end_date_time) === self.beginning_date_time
         errors.add(:beginning_date_time, "Court already booked at this time")
       end
