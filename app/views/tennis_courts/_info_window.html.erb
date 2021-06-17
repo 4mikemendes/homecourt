@@ -1,2 +1,17 @@
-<h2><%= tennis_court.court_name %></h2>
-<p><%= tennis_court.address %></p>
+<%= link_to tennis_court_path(tennis_court) do %>
+  <div class="window-map">
+    <div class="window-map-photo">
+      <% if tennis_court.photo.attached? %>
+        <%= cl_image_tag tennis_court.photo.key, crop: :fill %>
+      <% else %>
+        <%= image_tag "no-photo-available-icon-8.jpg" %>
+      <% end %>
+    </div>
+    <div class="window-map-info">
+      <h2><i class="fas fa-baseball-ball"></i></i></i>    <%= tennis_court.court_name %></h2>
+      <p><i class="fas fa-user-alt"></i> <%= tennis_court.user.first_name %></p>
+      <p><i class="fas fa-map-marker-alt"></i> <%= tennis_court.address %></p>
+      <p><i class="fas fa-euro-sign"></i> <%= tennis_court.price_per_hour %></p>
+    </div>
+  </div>
+<% end %>
