@@ -38,6 +38,6 @@
     <%= render 'shared/flashes' %>
 
     <%= yield %>
-    <%= render 'shared/footer' unless current_page?(controller: "pages", action: "home")%>
+    <%= render 'shared/footer' unless params[:controller] == "pages"  && params[:action] ==  "home" %>
   </body>
 </html>
