@@ -34,7 +34,7 @@
       <%= booking.user.email  %>
       <%= simple_form_for booking, method: :patch do |f| %>
       <%= f.input :status, collection: ["accepted", "rejected"] %>
-      <%= f.submit %>
+      <%= f.submit class: "btn btn-warning"%>
       <% end %>
       <% end %>
       <% else %>
@@ -88,7 +88,7 @@
       <%= simple_form_for [@tennis_court, @review] do |f| %>
       <%= f.input :content %>
       <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", id:"review_rating" %>
-      <%= f.submit "Send your review" %>
+      <%= f.submit "Send your review", class:"btn-secondary"%>
       <% end %>
       </div>
     </div>
