@@ -21,7 +21,7 @@
 
   <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
     <%= f.input :content, label: false, placeholder: "Message #{@chatroom.booking.tennis_court.user.first_name}" %>
-    <%= f.submit %>
+    <%= f.submit "Send message", class: "btn btn-warning" %>
   <% end %>
   </div>
 </div>
