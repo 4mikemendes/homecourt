@@ -37,6 +37,6 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <%= render 'shared/footer' unless params[:controller] == "pages" %>
+    <%= render 'shared/footer' unless params[:controller] == "pages" && params[:action] == "home" %>
   </body>
 </html>
