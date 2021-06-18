@@ -8,6 +8,11 @@
   box-shadow: none !important;
 }
 
+.mapboxgl-popup-content a {
+  box-decoration: none !important;
+  text-decoration: none !important;
+}
+
 #map {
  top:0;
  width:100%;
